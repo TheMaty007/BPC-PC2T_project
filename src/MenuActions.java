@@ -6,8 +6,57 @@ public class MenuActions {
         scanner.nextLine();
     }
 
-    public static void addEmployee(Scanner scanner) {
-        System.out.println("[TODO]");
+    public static void addEmployee(Company company, Scanner scanner) {
+        System.out.println("Select employee type:");
+        System.out.println("1. Data Analyst");
+        System.out.println("2. Security Specialist");
+        System.out.print("Type: ");
+
+        int type;
+        try {
+            type = Integer.parseInt(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid option. Please try again");
+            waitForEnter(scanner);
+            return;
+        }
+
+        if (type != 1 && type != 2) {
+            System.out.println("Invalid option. Please try again");
+            waitForEnter(scanner);
+            return;
+        }
+
+        System.out.print("First name: ");
+        String firstName = scanner.nextLine().trim();
+        System.out.print("Last name: ");
+        String lastName = scanner.nextLine().trim();
+        System.out.print("Birth year: ");
+
+        int birthYear;
+        try {
+            birthYear = Integer.parseInt(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid option. Please try again");
+            waitForEnter(scanner);
+            return;
+        }
+
+        if (firstName.isEmpty() || lastName.isEmpty()) {
+            System.out.println("First name and last name cannot be empty");
+            waitForEnter(scanner);
+            return;
+        }
+
+        Employee newEmployee;
+        if (type == 1) {
+            newEmployee = new DataAnalyst(firstName, lastName, birthYear);
+        } else {
+            newEmployee = new SecuritySpecialist(firstName, lastName, birthYear);
+        }
+
+        company.addEmployee(newEmployee);
+        System.out.println("Employee added: " + newEmployee);
         waitForEnter(scanner);
     }
 

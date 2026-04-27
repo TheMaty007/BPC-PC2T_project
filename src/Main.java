@@ -39,7 +39,7 @@ public class Main {
 
             switch (choice) {
                 case 1:
-                    MenuActions.addEmployee(scanner);
+                    MenuActions.addEmployee(company, scanner);
                     break;
                 case 2:
                     MenuActions.addCollaboration(scanner);
