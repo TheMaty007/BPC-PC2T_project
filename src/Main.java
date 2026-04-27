@@ -1,11 +1,6 @@
 import java.util.Scanner;
 
 public class Main {
-    private static void waitForEnter(Scanner scanner) {
-        System.out.print("Press Enter to return to the menu...");
-        scanner.nextLine();
-    }
-
     public static void main(String[] args) {
         Company company = new Company();
         Scanner scanner = new Scanner(System.in);
@@ -44,62 +39,34 @@ public class Main {
 
             switch (choice) {
                 case 1:
-                    System.out.println("[TODO]");
-                    waitForEnter(scanner);
+                    MenuActions.addEmployee(scanner);
                     break;
                 case 2:
-                    System.out.println("[TODO]");
-                    waitForEnter(scanner);
+                    MenuActions.addCollaboration(scanner);
                     break;
                 case 3:
-                    System.out.print("Enter employee ID to remove: ");
-                    try {
-                        int idToRemove = Integer.parseInt(scanner.nextLine());
-                        company.removeEmployee(idToRemove);
-                        System.out.println("Removal request processed");
-                    } catch (NumberFormatException e) {
-                        System.out.println("Invalid ID.");
-                    }
-                    waitForEnter(scanner);
+                    MenuActions.removeEmployee(company, scanner);
                     break;
                 case 4:
-                    System.out.print("Enter employee ID: ");
-                    try {
-                        int idToFind = Integer.parseInt(scanner.nextLine());
-                        Employee employee = company.getEmployee(idToFind);
-                        if (employee != null) {
-                            System.out.println(employee);
-                        } else {
-                            System.out.println("Employee with this ID not found");
-                        }
-                    } catch (NumberFormatException e) {
-                        System.out.println("Invalid ID");
-                    }
-                    waitForEnter(scanner);
+                    MenuActions.findEmployeeById(company, scanner);
                     break;
                 case 5:
-                    System.out.println("[TODO]");
-                    waitForEnter(scanner);
+                    MenuActions.executeEmployeeSkill(scanner);
                     break;
                 case 6:
-                    System.out.println("[TODO]");
-                    waitForEnter(scanner);
+                    MenuActions.aphabeticalListEmployees(scanner);
                     break;
                 case 7:
-                    System.out.println("[TODO]");
-                    waitForEnter(scanner);
+                    MenuActions.showStatistics(scanner);
                     break;
                 case 8:
-                    System.out.println("[TODO]");
-                    waitForEnter(scanner);
+                    MenuActions.listEmployeesInGroups(scanner);
                     break;
                 case 9:
-                    System.out.println("[TODO]");
-                    waitForEnter(scanner);
+                    MenuActions.saveEmployeesToFile(scanner);
                     break;
                 case 10:
-                    System.out.println("[TODO]");
-                    waitForEnter(scanner);
+                    MenuActions.loadEmployeesFromFile(scanner);
                     break;
                 case 0:
                     System.out.println("[TODO] - save to SQL");
