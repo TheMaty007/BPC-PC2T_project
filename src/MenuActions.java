@@ -6,6 +6,10 @@ public class MenuActions {
         scanner.nextLine();
     }
 
+    private static String formatEmployeeForList(Employee e) {
+        return String.format("%s %s (nar. %d) [%d]", e.getFirstName(), e.getLastName(), e.getBirthYear(), e.getId());
+    }
+
     public static void addEmployee(Company company, Scanner scanner) {
         System.out.println("Select employee type:");
         System.out.println("1. Data Analyst");
@@ -98,8 +102,48 @@ public class MenuActions {
         waitForEnter(scanner);
     }
 
-    public static void aphabeticalListEmployees(Scanner scanner) {
-        System.out.println("[TODO]");
+    public static void alphabeticalListEmployees(Company company, Scanner scanner) {
+        java.util.Collection<Employee> allEmployees = company.getAllEmployees().values();
+        if (allEmployees.isEmpty()) {
+            System.out.println("No employees to show.");
+            waitForEnter(scanner);
+            return;
+        }
+
+        java.util.List<Employee> security = new java.util.ArrayList<>();
+        java.util.List<Employee> analysts = new java.util.ArrayList<>();
+        java.util.List<Employee> others = new java.util.ArrayList<>();
+
+        for (Employee e : allEmployees) {
+            if (e instanceof SecuritySpecialist) security.add(e);
+            else if (e instanceof DataAnalyst) analysts.add(e);
+            else others.add(e);
+        }
+
+        java.util.Comparator<Employee> cmp = (a, b) -> {
+            int c = a.getLastName().compareToIgnoreCase(b.getLastName());
+            if (c != 0) return c;
+            return a.getFirstName().compareToIgnoreCase(b.getFirstName());
+        };
+
+            if (!security.isEmpty()) {
+            java.util.Collections.sort(security, cmp);
+            System.out.println("\nGroup: Security specialist (" + security.size() + ")");
+            for (Employee e : security) System.out.println("  " + formatEmployeeForList(e));
+        }
+
+        if (!analysts.isEmpty()) {
+            java.util.Collections.sort(analysts, cmp);
+            System.out.println("\nGroup: Data analyst (" + analysts.size() + ")");
+            for (Employee e : analysts) System.out.println("  " + formatEmployeeForList(e));
+        }
+
+        if (!others.isEmpty()) {
+            java.util.Collections.sort(others, cmp);
+            System.out.println("\nGroup: Other (" + others.size() + ")");
+            for (Employee e : others) System.out.println("  " + formatEmployeeForList(e));
+        }
+
         waitForEnter(scanner);
     }
 

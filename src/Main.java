@@ -30,7 +30,7 @@ public class Main {
             System.out.println("3. Remove employee");
             System.out.println("4. Find employee by ID");
             System.out.println("5. Execute employee skill");
-            System.out.println("6. Alphabetical list of employees in groups");
+            System.out.println("6. Alphabetical list of employees by last name in groups");
             System.out.println("7. Show statistics");
             System.out.println("8. List number of employees in groups");
             System.out.println("9. Save employees to file");
@@ -64,7 +64,7 @@ public class Main {
                     MenuActions.executeEmployeeSkill(scanner);
                     break;
                 case 6:
-                    MenuActions.aphabeticalListEmployees(scanner);
+                    MenuActions.alphabeticalListEmployees(company, scanner);
                     break;
                 case 7:
                     MenuActions.showStatistics(scanner);
