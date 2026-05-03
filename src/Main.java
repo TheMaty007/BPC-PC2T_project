@@ -46,45 +46,36 @@ public class Main {
                 choice = -1;
             }
 
+            Tools.clearConsole();
             switch (choice) {
                 case 1:
-                    Tools.clearConsole();
                     MenuActions.addEmployee(company, scanner);
                     break;
                 case 2:
-                    Tools.clearConsole();
                     MenuActions.addCollaboration(scanner);
                     break;
                 case 3:
-                    Tools.clearConsole();
                     MenuActions.removeEmployee(company, scanner);
                     break;
                 case 4:
-                    Tools.clearConsole();
                     MenuActions.findEmployeeById(company, scanner);
                     break;
                 case 5:
-                    Tools.clearConsole();
                     MenuActions.executeEmployeeSkill(scanner);
                     break;
                 case 6:
-                    Tools.clearConsole();
                     MenuActions.aphabeticalListEmployees(scanner);
                     break;
                 case 7:
-                    Tools.clearConsole();
                     MenuActions.showStatistics(scanner);
                     break;
                 case 8:
-                    Tools.clearConsole();
                     MenuActions.listEmployeesInGroups(scanner);
                     break;
                 case 9:
-                    Tools.clearConsole();
                     MenuActions.saveEmployeesToFile(scanner);
                     break;
                 case 10:
-                    Tools.clearConsole();
                     MenuActions.loadEmployeesFromFile(scanner);
                     break;
                 case 0:
