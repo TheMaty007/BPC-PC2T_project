@@ -14,7 +14,16 @@ public class Main {
         company.addEmployee(employee2);
 
         boolean running = true;
+        boolean wrongMenuEntry = false;
+        
         while (running) {
+            Tools.clearConsole();
+
+            if(wrongMenuEntry) {                
+                System.out.println("\nInvalid option. Please try again\n");
+                wrongMenuEntry = false;
+            }
+
             System.out.println("=== EMPLOYEE DATABASE ===");
             System.out.println("1. Add employee");
             System.out.println("2. Add collaboration");
@@ -27,7 +36,7 @@ public class Main {
             System.out.println("9. Save employees to file");
             System.out.println("10. Load employees from file");
             System.out.println("0. Exit program (and save to SQL)");
-            System.out.print("Select an action: ");
+            System.out.print("\nSelect an action: ");
 
             String input = scanner.nextLine();
             int choice;
@@ -39,33 +48,43 @@ public class Main {
 
             switch (choice) {
                 case 1:
+                    Tools.clearConsole();
                     MenuActions.addEmployee(company, scanner);
                     break;
                 case 2:
+                    Tools.clearConsole();
                     MenuActions.addCollaboration(scanner);
                     break;
                 case 3:
+                    Tools.clearConsole();
                     MenuActions.removeEmployee(company, scanner);
                     break;
                 case 4:
+                    Tools.clearConsole();
                     MenuActions.findEmployeeById(company, scanner);
                     break;
                 case 5:
+                    Tools.clearConsole();
                     MenuActions.executeEmployeeSkill(scanner);
                     break;
                 case 6:
+                    Tools.clearConsole();
                     MenuActions.aphabeticalListEmployees(scanner);
                     break;
                 case 7:
+                    Tools.clearConsole();
                     MenuActions.showStatistics(scanner);
                     break;
                 case 8:
+                    Tools.clearConsole();
                     MenuActions.listEmployeesInGroups(scanner);
                     break;
                 case 9:
+                    Tools.clearConsole();
                     MenuActions.saveEmployeesToFile(scanner);
                     break;
                 case 10:
+                    Tools.clearConsole();
                     MenuActions.loadEmployeesFromFile(scanner);
                     break;
                 case 0:
@@ -74,7 +93,7 @@ public class Main {
                     running = false;
                     break;
                 default:
-                    System.out.println("\nInvalid option. Please try again\n");
+                    wrongMenuEntry = true;
             }
         }
         scanner.close();

@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class MenuActions {
     private static void waitForEnter(Scanner scanner) {
-        System.out.print("Press Enter to return to the menu...");
+        System.out.print("\nPress Enter to return to the menu...");
         scanner.nextLine();
     }
 
